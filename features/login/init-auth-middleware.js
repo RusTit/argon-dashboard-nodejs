@@ -29,7 +29,7 @@ module.exports = function initAuthMiddleware(app) {
         {
           clientID: GOOGLE_CLIENT_ID,
           clientSecret: GOOGLE_CLIENT_SECRET,
-          callbackURL: '',
+          callbackURL: GOOGLE_CLIENT_CALLBACK,
           passReqToCallback: true,
         },
         async function(request, accessToken, refreshToken, profile, done) {
