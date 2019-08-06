@@ -2,11 +2,11 @@ const express = require('express');
 
 const router = express.Router();
 
-const mountRegisterRoutes = require('../features/register/routes');
-const mountLoginRoutes = require('../features/login/routes');
-const mountLogoutRoutes = require('../features/logout/routes');
-const mountResetPasswordRoutes = require('../features/reset-password/routes');
-const mountProfileRoutes = require('../features/profile/routes');
+const mountRegisterRoutes = require('../controllers/register/routes');
+const mountLoginRoutes = require('../controllers/login/routes');
+const mountLogoutRoutes = require('../controllers/logout/routes');
+const mountResetPasswordRoutes = require('../controllers/reset-password/routes');
+const mountProfileRoutes = require('../controllers/profile/routes');
 
 function isAuthenticated(req, res, next) {
   if (req.user && req.isAuthenticated()) {
