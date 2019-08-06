@@ -1,15 +1,9 @@
-const Knex = require('knex');
 const bcrypt = require('bcrypt');
-
-const knexConfig = require('../../db/knexfile');
-
-const knex = Knex(knexConfig[process.env.NODE_ENV]);
+const db = require('../../db');
 
 async function getUserForLoginData(email, password) {
-  const [user] = await knex('users')
-    .select()
-    .where({ email })
-    .limit(1);
+  const { User } = db;
+  const user = await User.findOne({ email });
 
   if (!user) {
     return null;
@@ -22,22 +16,20 @@ async function getUserForLoginData(email, password) {
   }
 
   return {
-    id: user.id,
+    // eslint-disable-next-line no-underscore-dangle
+    id: user._id,
     username: user.email,
     created_at: user.created_at,
   };
 }
 
 async function getUser(query) {
-  const [user] = await knex('users')
-    .select()
-    .where(query)
-    .limit(1);
-  return user;
+  const { User } = db;
+  return User.findOne(query);
 }
 
 async function getUserById(id) {
-  return getUser({ id });
+  return getUser({ _id: id });
 }
 
 module.exports = {

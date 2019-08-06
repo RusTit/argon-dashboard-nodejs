@@ -1,14 +1,19 @@
 version: '3'
 services:
-  postgres:
-    image: postgres
+  mongodb:
+    image: mongo:latest
+    container_name: "mongodb"
+    restart: always
     environment:
-      POSTGRES_USER: 'creativeTim'
-      POSTGRES_PASSWORD: 'creativeTim'
-    ports:
-      - 5432:5432
+      MONGO_DATA_DIR: '/data/db'
+      MONGO_LOG_DIR: '/dev/null'
+      MONGO_INITDB_ROOT_USERNAME: 'creativeTim'
+      MONGO_INITDB_ROOT_PASSWORD: 'creativeTim'
     volumes:
-      - postgresql-data:/var/lib/postgresql/data
+      - ./data/db:/data/db
+    ports:
+      - 27017:27017
+    command: mongod --smallfiles --logpath=/dev/null # --quiet
   redis:
     image: redis:alpine
     ports:
@@ -19,5 +24,3 @@ services:
       - 80:80
     volumes:
       - ./haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg
-volumes:
-  postgresql-data:

@@ -1,22 +1,17 @@
-const knex = require('../../db');
+const db = require('../../db');
 
 async function getUser(id) {
-  const [user] = await knex('users')
-    .where('id', id)
-    .select('email', 'name');
-  return user;
+  const { User } = db;
+  return User.findById(id, 'email name');
 }
 
 async function updateUserInfo({ name, username: email, id }) {
-  const [user] = await knex('users')
-    .where({ id })
-    .update({
-      name,
-      email,
-      updated_at: new Date(),
-    })
-    .returning(['email', 'name']);
-  return user;
+  const { User } = db;
+  const user = await User.findByIdAndUpdate()(id, { name, email, updated_at: new Date() });
+  return {
+    email: user.email,
+    name: user.name,
+  };
 }
 
 module.exports = {
