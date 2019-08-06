@@ -34,7 +34,16 @@ async function getUserById(id) {
 
 async function authByGoogle(profile) {
   const { User } = db;
-  return User.findOrCreate({ googleId: profile.id });
+  const userOld = await User.findOne({ googleId: profile.id });
+  if (userOld) {
+    return userOld;
+  }
+  return User.create({
+    name: profile.displayName,
+    email: profile.email,
+    password: '',
+    googleId: profile.id,
+  });
 }
 
 module.exports = {

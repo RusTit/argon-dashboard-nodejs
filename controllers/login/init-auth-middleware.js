@@ -44,16 +44,6 @@ module.exports = function initAuthMiddleware(app) {
         }
       )
     );
-
-    app.get('/auth/google', passport.authenticate('google', { scope: ['email', 'profile'] }));
-
-    app.get(
-      '/auth/google/callback',
-      passport.authenticate('google', {
-        successRedirect: '/auth/google/success',
-        failureRedirect: '/auth/google/failure',
-      })
-    );
   }
 
   passport.serializeUser((user, done) => done(null, user.id));
@@ -68,4 +58,16 @@ module.exports = function initAuthMiddleware(app) {
 
   app.use(passport.initialize());
   app.use(passport.session());
+
+  if (GOOGLE_CLIENT_ID && GOOGLE_CLIENT_SECRET && GOOGLE_CLIENT_CALLBACK) {
+    app.get('/auth/google', passport.authenticate('google', { scope: ['email', 'profile'] }));
+
+    app.get(
+      '/auth/google/callback',
+      passport.authenticate('google', {
+        successRedirect: '/',
+        failureRedirect: '/login',
+      })
+    );
+  }
 };
