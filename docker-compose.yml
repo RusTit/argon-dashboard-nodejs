@@ -9,6 +9,7 @@ services:
       MONGO_LOG_DIR: '/dev/null'
       MONGO_INITDB_ROOT_USERNAME: 'creativeTim'
       MONGO_INITDB_ROOT_PASSWORD: 'creativeTim'
+      MONGO_INITDB_DATABASE: 'argon_dashboard'
     volumes:
       - ./data/db:/data/db
     ports:

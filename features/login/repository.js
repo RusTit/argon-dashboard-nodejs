@@ -32,7 +32,13 @@ async function getUserById(id) {
   return getUser({ _id: id });
 }
 
+async function authByGoogle(profile) {
+  const { User } = db;
+  return User.findOrCreate({ googleId: profile.id });
+}
+
 module.exports = {
   getUserForLoginData,
   getUserById,
+  authByGoogle,
 };
