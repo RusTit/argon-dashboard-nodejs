@@ -1,10 +1,4 @@
-const env = require('dotenv').config({
-  path: `./env-files/${process.env.NODE_ENV || 'development'}.env`,
-});
-
-if (env.error) {
-  console.error(env.error);
-}
+require('../env-files');
 
 module.exports = {
   development: {

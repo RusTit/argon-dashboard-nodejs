@@ -1,11 +1,4 @@
-const env = require('dotenv').config({
-  path: `./env-files/${process.env.NODE_ENV || 'development'}.env`,
-});
-
-if (env.error) {
-  console.error(env.error);
-}
-
+require('./env-files');
 const express = require('express');
 const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
