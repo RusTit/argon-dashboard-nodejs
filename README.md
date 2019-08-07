@@ -192,9 +192,9 @@ The documentation for the Argon Dashboard Node is hosted at our [website](https:
 │   └── index.js
 ├── db
 │   ├── index.js
-│   ├── knexfile.js
-│   ├── migrations
-│   │   └── 20190213122702_create-users-table.js
+│   ├── mongoose.js
+│   ├── models
+│   │   └── User.js
 │   └── seeds
 │       └── create-default-user.js
 ├── docker-compose.yml

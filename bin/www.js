@@ -1,13 +1,7 @@
-#!/usr/bin/env node
-
-require('dotenv').config({
-  path: `./env-files/${process.env.NODE_ENV || 'development'}.env`,
-});
-
 /**
  * Module dependencies.
  */
-
+require('../env-files');
 const debug = require('debug')('express:www');
 const http = require('http');
 const app = require('../app');

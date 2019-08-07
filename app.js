@@ -1,7 +1,4 @@
-require('dotenv').config({
-  path: `./env-files/${process.env.NODE_ENV || 'development'}.env`,
-});
-
+require('./env-files');
 const express = require('express');
 const path = require('path');
 const expressLayouts = require('express-ejs-layouts');
@@ -9,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const RedisStore = require('connect-redis')(session);
 
-const initAuthMiddleware = require('./features/login/init-auth-middleware');
+const initAuthMiddleware = require('./controllers/login/init-auth-middleware');
 const indexRouter = require('./routes/index');
 
 const redisStoreConfig = {
