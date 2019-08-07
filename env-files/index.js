@@ -26,6 +26,6 @@ try {
   if (e.code === 'ENOENT') {
     logger.warn('Deployed .env file is missing, skipping.');
   } else {
-    logger.error('Error loading enviroment files: %s', env.error);
+    logger.error('Error loading environment files: %s', env.error);
   }
 }
