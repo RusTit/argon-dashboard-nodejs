@@ -21,5 +21,9 @@ storage
     logger.info('getEnv.js: .env downloaded successfully');
   })
   .catch(e => {
-    logger.error(`getEnv.js: There was an error: ${JSON.stringify(e, undefined, 2)}`);
+    if (e.code === 404) {
+      logger.warn('.env file is missing in the bucket, ignoring.');
+    } else {
+      logger.error(`getEnv.js: There was an error: ${JSON.stringify(e, undefined, 2)}`);
+    }
   });
