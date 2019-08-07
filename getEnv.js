@@ -1,6 +1,6 @@
 const { GCLOUD_PROJECT } = process.env;
 
-if (GCLOUD_PROJECT) {
+if (!GCLOUD_PROJECT) {
   console.info('Running locally. Exit.');
   process.exit(0);
 } else {
