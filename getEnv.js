@@ -1,24 +1,25 @@
-const { GCLOUD_PROJECT } = process.env;
+const { Storage } = require('@google-cloud/storage');
 
-if (!GCLOUD_PROJECT) {
-  console.info('Running locally. Exit.');
+const { GOOGLE_CLOUD_PROJECT } = process.env;
+const logger = require('./logger');
+
+if (!GOOGLE_CLOUD_PROJECT) {
+  logger.info('Running locally. Exit.');
   process.exit(0);
 } else {
-  console.info('Running in Google Platform');
+  logger.info('Running in Google Platform');
 }
-
-const { Storage } = require('@google-cloud/storage');
 
 const storage = new Storage();
 
-const bucketName = `${GCLOUD_PROJECT}.appspot.com`;
+const bucketName = `${GOOGLE_CLOUD_PROJECT}.appspot.com`;
 storage
   .bucket(bucketName)
   .file('.env')
   .download({ destination: '.env' })
   .then(() => {
-    console.info('getEnv.js: .env downloaded successfully');
+    logger.info('getEnv.js: .env downloaded successfully');
   })
   .catch(e => {
-    console.error(`getEnv.js: There was an error: ${JSON.stringify(e, undefined, 2)}`);
+    logger.error(`getEnv.js: There was an error: ${JSON.stringify(e, undefined, 2)}`);
   });
