@@ -9,7 +9,7 @@ const downloadEnvFile = async () => {
     logger.info('Google Platform not detected.');
   } else {
     logger.info('Running on Google Platform.');
-    const bucketName = `${GOOGLE_CLOUD_PROJECT}.appspot.com`;
+    const bucketName = `${GOOGLE_CLOUD_PROJECT}_envs`;
     logger.info('Bucket name: %s', bucketName);
     try {
       const storage = new Storage();
