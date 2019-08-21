@@ -4,12 +4,19 @@
 
 ![Product Image](https://s3.amazonaws.com/creativetim_bucket/products/148/original/opt_ad_node_thumbnail.jpg)
 
-Start your development with a Bootstrap 4 Admin Dashboard built for Node.js framework, the newest go-to technology for top companies. [Creative Tim](https://www.creative-tim.com/) partnered with [Udevoffice](https://udevoffice.com/) to provide a fully coded “frontend + backend” solution for you. It features a huge number of components that can help you create amazing websites and brings with itself innumerable advantages: lightweight, fast, scalable and modern way to execute your next top app.
+Start your development with a Bootstrap 4 Admin Dashboard built for Node.js framework, the newest go-to technology for
+top companies. [Creative Tim](https://www.creative-tim.com/) partnered with [Udevoffice](https://udevoffice.com/) to
+provide a fully coded “frontend + backend” solution for you. It features a huge number of components that can help you
+create amazing websites and brings with itself innumerable advantages: lightweight, fast, scalable and modern way to
+execute your next top app.
 
 **FULLY CODED COMPONENTS**
 
-Argon Dashboard Node is built with over frontend 100 individual components, giving you the freedom of choosing and combining. All components can take variations in colour, that you can easily modify using SASS files.
-You will save a lot of time going from prototyping to full-functional code, because all elements are implemented. This Dashboard is coming with prebuilt examples, so the development process is seamless, switching from our pages to the real website is very easy to be done.
+Argon Dashboard Node is built with over frontend 100 individual components, giving you the freedom of choosing and
+combining. All components can take variations in colour, that you can easily modify using SASS files.
+You will save a lot of time going from prototyping to full-functional code, because all elements are implemented.
+This Dashboard is coming with prebuilt examples, so the development process is seamless, switching from our pages to
+the real website is very easy to be done.
 Every element has multiple states for colors, styles, hover, focus, that you can easily access and use.
 View all components [here](https://argon-dashboard-nodejs.creative-tim.com/docs/components/alerts?ref=adn-readme)
 
@@ -19,73 +26,53 @@ Each element is well presented in a very complex documentation. You can check th
 
 **Example Pages**
 
-If you want to get inspiration or just show something directly to your clients, you can jump start your development with our pre-built example pages. You will be able to quickly set up the basic structure for your web project.
+If you want to get inspiration or just show something directly to your clients, you can jump start your development with
+our pre-built example pages. You will be able to quickly set up the basic structure for your web project.
 View example pages [here](https://argon-dashboard-nodejs.creative-tim.com/?ref=adn-readme)
 
 
 ## Installation
 
-1. You need `Node.js` (at least 10.x version) installed on your machine, if you don't have it, you should install it - download [link](https://nodejs.org/en/download/)
-2. [Clone the project from github](https://github.com/creativetimofficial/argon-dashboard-nodejs) or [download the archive](https://github.com/creativetimofficial/argon-dashboard-nodejs)
+1. You need `Node.js` (at least 10.x version) installed on your machine, if you don't have it, you should install it -
+download [link](https://nodejs.org/en/download/)
+2. [Clone the project from github](https://github.com/RusTit/argon-dashboard-nodejs) or
+[download the archive](https://github.com/creativetimofficial/argon-dashboard-nodejs)
 3. `cd` to your downloaded Argon app
 4. Install necessary dependencies:
     - **Via node `npm` package manager** - Run `npm install` on the project root
     - **Via `yarn` package manager** - Run `yarn install` on the project root
 
-## Configuration for PostgreSQL database and Redis data structure store
+## Configuration for Mongoose database
 
 ##### Via Docker
 
 1. Install **Docker** on your machine
-2. Run `docker-compose up -d` in a terminal on the project root. This will start 3 containers:
-    - database(PostgreSQL) container;
-    - redis container - required for session management;
-    - haproxy container - required only for a staging/production setup;
+2. Run `docker-compose up -d` in a terminal on the project root. This will one container:
+    - database(Mongoose) container;
 
 ##### Via another chosen solution.
 
-1. Install your **PostgreSQL** database
-2. Install your **Redis** server
-3. Change connection configuration, from your root `cd` to `env-files` folder and change the following configurations with your own:
+1. Install your **Mongoose** database
+3. Change connection configuration, from your root `cd` to `env-files` folder and change the following configurations
+with your own:
 
-###### **For PostgreSQL connection:**
+###### **For Mongoose connection:**
 1. Database connection via URL
 ```bash
-DATABASE_URL=http://creativeTim:creativeTim@127.0.0.1:5432/creativeTim
-# Example: DATABASE_URL=http://<user>:<password>@<host>/<database_name>
-```
-2. Database connection via credentials
-```bash
-DATABASE_HOST=127.0.0.1
-DATABASE_PORT=5432
-DATABASE_NAME=creativeTim
-DATABASE_USER=creativeTim
-DATABASE_PASSWORD=creativeTim
-```
-
-######  **For Redis connection:**
-1. REDIS connection via URL
-```bash
-REDIS_URL=redis://:@127.0.0.1:6379
-# Example: redis://:<password>@<host>:<port>
-```
-2. REDIS connection via credentials
-```bash
-REDIS_HOST=127.0.0.1
-REDIS_PORT=6379
-REDIS_PASSWORD=
+DATABASE_URL=mongodb://localhost:27017/argon_dashboard
+# Example: DATABASE_URL=mongodb://<username>:<password>@<host>:<port>/<database>?options...
 ```
 
 ## Migrations and seeds
 
-1. For database tables structure, in the project root run: `npm run knex migrate:latest` or `yarn knex migrate:latest` if you are using `yarn` as the default package manager
-2. To create a default user, run: `npm run knex seed:run` or `yarn knex seed:run` if you are using `yarn` as the default package manager
+1. To create a default user, run: `npm run mongoose-init` or `yarn mongoose-init` if you are using `yarn` as the
+default package manager
 
 ## Run the application
 
 1. For starting the application, the following script (defined in `package.json` under `scripts`) must be called:
-    - via **npm**: `npm run start` or `npm run dev` for starting the development environment, which has livereload enabled;
-    - via **yarn**: `yarn start` or `yarn dev` for starting the development environment, which has livereload enabled;
+    - via **npm**: `npm run start`;
+    - via **yarn**: `yarn start`;
 
 
 ## Usage
