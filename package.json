@@ -22,7 +22,7 @@
     "body-parser": "^1.18.3",
     "browser-sync": "^2.26.3",
     "concurrently": "^4.1.0",
-    "connect-redis": "^3.4.0",
+    "connect-mongo": "^3.0.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "del": "^3.0.0",
