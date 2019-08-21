@@ -24,6 +24,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, staticFolder)));
 
 const { COOKIE_EXPIRATION_MS } = process.env;
+app.set('trust proxy', 1); // trust first proxy
 app.use(
   session({
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
