@@ -174,7 +174,7 @@ The documentation for the Argon Dashboard Node is hosted at our [website](https:
 ├── README.md
 ├── app.js
 ├── bin
-│   └── www
+│   └── www.js
 ├── config
 │   └── index.js
 ├── db
@@ -187,10 +187,11 @@ The documentation for the Argon Dashboard Node is hosted at our [website](https:
 ├── docker-compose.yml
 ├── docs
 │   └── documentation.html
+├── getEnv.js
 ├── env-files
 │   ├── development.env
 │   └── production.env
-├── features
+├── controllers
 │   ├── login
 │   │   ├── commands
 │   │   │   ├── load-page.js
@@ -225,7 +226,6 @@ The documentation for the Argon Dashboard Node is hosted at our [website](https:
 │       ├── commands
 │       │   └── load-page.js
 │       └── routes.js
-├── haproxy.cfg
 ├── logger.js
 ├── package.json
 ├── public
