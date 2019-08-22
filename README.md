@@ -2,8 +2,8 @@
 
 1. You need `Node.js` (at least 10.x version) installed on your machine, if you don't have it, you should install it -
 download [link](https://nodejs.org/en/download/)
-2. [Clone the project from github](https://github.com/RusTit/argon-dashboard-nodejs) or
-[download the archive](https://github.com/RusTit/argon-dashboard-nodejs)
+2. [Clone the project from github](https://github.com/marcomiduri/node-template.git) or
+[download the archive](https://github.com/marcomiduri/node-template.git)
 3. `cd` to your downloaded Argon app
 4. Install necessary dependencies:
     - **Via node `npm` package manager** - Run `npm install` on the project root
@@ -26,7 +26,7 @@ with your own:
 ###### **For Mongoose connection:**
 1. Database connection via URL
 ```bash
-DATABASE_URL=mongodb://localhost:27017/argon_dashboard
+DATABASE_URL=mongodb://localhost:27017/node-template
 # Example: DATABASE_URL=mongodb://<username>:<password>@<host>:<port>/<database>?options...
 ```
 
@@ -72,8 +72,7 @@ module.exports = (router, middlewares = []) => {
 };
 ```
 
-- A `repository.js` file that contains feature database queries
-- A `commands` folder where you can find all feature functionality functions, for example the login template rendering
+- A `controllers` folder where you can find all feature functionality functions, for example the login template rendering
 which looks like this:
 
 ```javascript
